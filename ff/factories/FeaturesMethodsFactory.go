@@ -1,29 +1,35 @@
 package ff_factories
 
 import (
+	ff "baseapplicationgo/main/configs/ff/lib/configs/resources"
+	ff_gateways "baseapplicationgo/main/configs/ff/lib/gateways"
+	ff_gateways_cacheddb "baseapplicationgo/main/configs/ff/lib/gateways/cacheddb"
+	ff_gateways_mongo "baseapplicationgo/main/configs/ff/lib/gateways/mongo"
+	ff_mongo_redis "baseapplicationgo/main/configs/ff/lib/gateways/redis"
 	"errors"
-	"github.com/GabrielEstmr/ff-4-go/ff"
-	ff_mongo "github.com/GabrielEstmr/ff-4-go/ff/mongo"
 )
 
-type FeaturesMethodsFactory struct {
-	ffConfigData *ff.FfConfigData
+type FeaturesGatewayFactory struct {
+	ffConfigData ff.FfClientArgs
 }
 
-func NewFeaturesMethodsFactory(ffConfigData *ff.FfConfigData) *FeaturesMethodsFactory {
-	return &FeaturesMethodsFactory{ffConfigData}
+func NewFeaturesGatewayFactory(ffConfigData ff.FfClientArgs) *FeaturesGatewayFactory {
+	return &FeaturesGatewayFactory{ffConfigData}
 }
 
-func (this *FeaturesMethodsFactory) Get() (ff.FeaturesMethods, error) {
-	if this.ffConfigData.GetClientType() == ff.MONGO &&
-		this.ffConfigData.GetHasCaching() == false {
-		return ff_mongo.NewFeaturesMongoMethodsImpl(this.ffConfigData), nil
+func (this *FeaturesGatewayFactory) Get() (ff_gateways.FeaturesGateway, error) {
+	if this.ffConfigData.IsMongoType() &&
+		!this.ffConfigData.HasCaching() {
+		return ff_gateways_mongo.NewFeaturesMongoMethodsImpl(this.ffConfigData), nil
 	}
 
-	if this.ffConfigData.GetClientType() == ff.MONGO &&
-		this.ffConfigData.GetHasCaching() == true &&
-		this.ffConfigData.GetCacheClientType() == ff.REDIS {
-		return ff_mongo.NewFeaturesCachedMongoMethodsImpl(this.ffConfigData), nil
+	if this.ffConfigData.IsMongoType() &&
+		this.ffConfigData.HasCaching() &&
+		this.ffConfigData.IsRedisCacheType() {
+		return ff_gateways_cacheddb.NewFeaturesCachedMongoGatewayImpl(
+			ff_gateways_mongo.NewFeaturesMongoMethodsImpl(this.ffConfigData),
+			ff_mongo_redis.NewFeaturesRedisGatewayImpl(this.ffConfigData),
+		), nil
 	}
 
 	return nil, errors.New("could not instantiate a valid FeaturesData")
