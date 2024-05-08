@@ -66,9 +66,9 @@ Use the client arguments instantiated as above and the client factory to obtain 
 
 ```go
     client, err := ff_configs_factories.NewClientFactory(ffClientArgs).Build()
-if err != nil {
-log.Panicf("%s: %s", "Error to instantiate ff-4-go client", err.Error())
-}
+    if err != nil {
+      log.Panicf("%s: %s", "Error to instantiate ff-4-go client", err.Error())
+    }
 ```
 
 Through the client you have access to methods to manipulate feature-flags, feature-properties and rollouts in the code
