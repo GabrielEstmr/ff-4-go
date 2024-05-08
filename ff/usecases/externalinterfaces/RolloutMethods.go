@@ -10,10 +10,10 @@ type RolloutMethods interface {
 	Update(rollout ff_domains.Rollout) (ff_domains.Rollout, ff_domains_exceptions.LibException)
 	Delete(key string) ff_domains_exceptions.LibException
 	FindById(key string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
-	FindByFilter(filter ff_domains.RolloutFilter) (ff_domains.Rollout, ff_domains_exceptions.LibException)
+	//FindByFilter(filter ff_domains.RolloutFilter) (ff_domains.Rollout, ff_domains_exceptions.LibException)
 	AddTargetToRollout(key string, target string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
-	RemoveTargetToRollout(key string, target string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
-	Enable(key string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
-	Disable(key string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
-	IsTargetInRollout(key string, target string) (bool, ff_domains_exceptions.LibException)
+	RemoveTargetFromRollout(key string, target string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
+	EnableToAll(key string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
+	DisableToAll(key string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
+	IsEnabledAllOrTargetInRollout(key string, target string) (bool, ff_domains_exceptions.LibException)
 }

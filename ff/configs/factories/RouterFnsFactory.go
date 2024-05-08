@@ -7,8 +7,11 @@ import (
 )
 
 type RouterFnsFactory struct {
-	controllerBeans ff_gateways_ws_beans.ControllerBeans
-	clientArgs      ff_configs_resources.FfClientArgs
+	_FEATURE_FLAG_RESOURCE_NAME string
+	_ROLLOUT_RESOURCE_NAME      string
+	_FEATURE_PROP_RESOURCE_NAME string
+	controllerBeans             ff_gateways_ws_beans.ControllerBeans
+	clientArgs                  ff_configs_resources.FfClientArgs
 }
 
 func NewRouterFnsFactory(
@@ -16,8 +19,11 @@ func NewRouterFnsFactory(
 	clientArgs ff_configs_resources.FfClientArgs,
 ) *RouterFnsFactory {
 	return &RouterFnsFactory{
-		controllerBeans: controllerBeans,
-		clientArgs:      clientArgs,
+		_FEATURE_FLAG_RESOURCE_NAME: "feature-flags",
+		_ROLLOUT_RESOURCE_NAME:      "rollouts",
+		_FEATURE_PROP_RESOURCE_NAME: "feature-properties",
+		controllerBeans:             controllerBeans,
+		clientArgs:                  clientArgs,
 	}
 }
 
@@ -25,39 +31,149 @@ func (this RouterFnsFactory) GetFunctionBeans() ff_configs_resources.RouteFn {
 	values := make(map[string]ff_configs_resources.Route)
 	this.appendRoute(
 		values,
-		"/v1/features/{key}",
+		"/v1/"+this._FEATURE_FLAG_RESOURCE_NAME,
 		http.MethodPost,
 		this.controllerBeans.FeaturesController.CreateFeature,
 	)
 	this.appendRoute(
 		values,
-		"/v1/features/{key}",
+		"/v1/"+this._FEATURE_FLAG_RESOURCE_NAME+"/{key}",
 		http.MethodDelete,
 		this.controllerBeans.FeaturesController.DeleteFeature,
 	)
 	this.appendRoute(
 		values,
-		"/v1/features/{key}/disable",
+		"/v1/"+this._FEATURE_FLAG_RESOURCE_NAME+"/{key}/disable",
 		http.MethodPost,
 		this.controllerBeans.FeaturesController.DisableFeature,
 	)
 	this.appendRoute(
 		values,
-		"/v1/features/{key}/enable",
+		"/v1/"+this._FEATURE_FLAG_RESOURCE_NAME+"/{key}/enable",
 		http.MethodPost,
 		this.controllerBeans.FeaturesController.EnableFeature,
 	)
 	this.appendRoute(
 		values,
-		"/v1/features/{key}",
+		"/v1/"+this._FEATURE_FLAG_RESOURCE_NAME+"/{key}",
 		http.MethodGet,
 		this.controllerBeans.FeaturesController.FindFeatureByKey,
 	)
 	this.appendRoute(
 		values,
-		"/v1/features/{key}/verify-enabled",
+		"/v1/"+this._FEATURE_FLAG_RESOURCE_NAME+"/{key}/verify-enabled",
 		http.MethodPost,
 		this.controllerBeans.FeaturesController.IsFeatureEnabled,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_FLAG_RESOURCE_NAME+"/{key}/verify-disabled",
+		http.MethodPost,
+		this.controllerBeans.FeaturesController.IsFeatureDisabled,
+	)
+
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME,
+		http.MethodPost,
+		this.controllerBeans.RolloutController.CreateRollout,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}",
+		http.MethodPut,
+		this.controllerBeans.RolloutController.UpdateRollout,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}",
+		http.MethodDelete,
+		this.controllerBeans.RolloutController.DeleteRollout,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}",
+		http.MethodGet,
+		this.controllerBeans.RolloutController.FindRolloutByKey,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}/targets/{target}/add",
+		http.MethodPut,
+		this.controllerBeans.RolloutController.AddTargetToRollout,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}/targets/{target}/remove",
+		http.MethodPut,
+		this.controllerBeans.RolloutController.RemoveTargetFromRollout,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}/enable",
+		http.MethodPost,
+		this.controllerBeans.RolloutController.EnableToAll,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}/disable",
+		http.MethodPost,
+		this.controllerBeans.RolloutController.DisableToAll,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._ROLLOUT_RESOURCE_NAME+"/{key}/targets/{target}/verify",
+		http.MethodPost,
+		this.controllerBeans.RolloutController.VerifyIsTargetInRollout,
+	)
+
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME,
+		http.MethodPost,
+		this.controllerBeans.FeaturePropertyController.CreateFeatureProperty,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME+"/{key}",
+		http.MethodPut,
+		this.controllerBeans.FeaturePropertyController.UpdateFeatureProperty,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME+"/{key}",
+		http.MethodDelete,
+		this.controllerBeans.FeaturePropertyController.DeleteFeatureProperty,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME+"/{key}",
+		http.MethodGet,
+		this.controllerBeans.FeaturePropertyController.FindFeaturePropertyById,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME+"/{key}/values/{value}/add",
+		http.MethodPut,
+		this.controllerBeans.FeaturePropertyController.AddValueToFeatureProperty,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME+"/{key}/values/{value}/remove",
+		http.MethodPut,
+		this.controllerBeans.FeaturePropertyController.RemoveValueToFeatureProperty,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME+"/{key}/enable",
+		http.MethodPost,
+		this.controllerBeans.FeaturePropertyController.EnableFeatureProperty,
+	)
+	this.appendRoute(
+		values,
+		"/v1/"+this._FEATURE_PROP_RESOURCE_NAME+"/{key}/disable",
+		http.MethodPost,
+		this.controllerBeans.FeaturePropertyController.DisableFeatureProperty,
 	)
 	return values
 }

@@ -5,6 +5,8 @@ import (
 	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
 )
 
-type RegisterMethods interface {
-	RegisterFeature(features ff_domains.Features) ff_domains_exceptions.LibException
+type RegisterMethodsImpl interface {
+	RegisterFeatureFlags(featuresFlags ff_domains.FeatureFlags) ff_domains_exceptions.LibException
+	RegisterFeatureProperties(featureProperties ff_domains.FeatureProperties) ff_domains_exceptions.LibException
+	RegisterRollouts(rollouts ff_domains.Rollouts) ff_domains_exceptions.LibException
 }

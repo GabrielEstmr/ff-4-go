@@ -6,10 +6,10 @@ import (
 )
 
 type FeaturesMethods interface {
-	Create(feature ff_domains.Feature) (ff_domains.Feature, ff_domains_exceptions.LibException)
+	Create(featureFlag ff_domains.FeatureFlag) (ff_domains.FeatureFlag, ff_domains_exceptions.LibException)
 	Delete(key string) ff_domains_exceptions.LibException
-	Enable(key string) (ff_domains.Feature, ff_domains_exceptions.LibException)
-	Disable(key string) (ff_domains.Feature, ff_domains_exceptions.LibException)
+	Enable(key string) (ff_domains.FeatureFlag, ff_domains_exceptions.LibException)
+	Disable(key string) (ff_domains.FeatureFlag, ff_domains_exceptions.LibException)
 	IsEnabled(key string) (bool, ff_domains_exceptions.LibException)
 	IsDisabled(key string) (bool, ff_domains_exceptions.LibException)
 }
