@@ -1,6 +1,6 @@
 # Features for Golang (ff-4-go)
 
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/redis/go-redis/v9)](https://pkg.go.dev/github.com/redis/go-redis/v9?tab=doc)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/redis/go-redis/v9)](https://github.com/GabrielEstmr/ff-4-go)
 
 > ff-4-go is brought to you by :star: [**Gabriel Rodrigues**](https://www.linkedin.com/in/gabrielmoraisrodrigues/).
 > Gabriel Rodrigues is a back-end software developer graduated in aerospace engineering and with more than 8 years
@@ -128,17 +128,11 @@ type RolloutMethods interface {
 }
 ```
 
-## How to Use
-
-### Via Endpoints
-
-### Via Methods in your host application
-
 ## Available Endpoints
 
-1. Feature Properties Endpoints
+- Feature Properties Endpoints
 
-- Create Feature Property
+Create Feature Property
 
 ```shell
 curl --request POST \
@@ -157,7 +151,7 @@ curl --request POST \
 }'
 ```
 
-- Update Feature Property
+Update Feature Property
 
 ```shell
 curl --request PUT \
@@ -176,52 +170,203 @@ curl --request PUT \
 }'
 ```
 
-- Delete Feature Property
+Delete Feature Property
 
 ```shell
 curl --request DELETE \
   --url http://localhost:8081/ff/v1/feature-properties/FEATURE_TEST
 ```
 
-- Get Feature Property by its key
+Get Feature Property by its key
 
 ```shell
 curl --request GET \
   --url http://localhost:8081/ff/v1/feature-properties/FEATURE_TEST
 ```
 
-- Add value to a Feature Property
+Add value to a Feature Property
 
 ```shell
 curl --request PUT \
   --url http://localhost:8081/ff/v1/feature-properties/FEATURE_TEST/values/new_value/remove
 ```
 
-- Remove value to a Feature Property
+Remove value to a Feature Property
 
 ```shell
-
+curl --request PUT \
+  --url http://localhost:8081/ff/v1/feature-properties/FEATURE_TEST/values/new_value/remove
 ```
 
-- Enable Feature Property
+Enable Feature Property
 
 ```shell
-
+curl --request POST \
+  --url http://localhost:8081/ff/v1/feature-properties/FEATURE_TEST/enable
 ```
 
-- Disable Feature Property
+Disable Feature Property
 
 ```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/feature-properties/FEATURE_TEST/disable
+```
 
+- Feature Flags Endpoints
+
+Create Feature Flag
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/feature-flags \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"key": "FEATURE_TEST",
+	"group": "rabbitmq-listener-retry",
+	"description": "feature to middlewares rabbitmq behaviour",
+	"value": false
+}'
+```
+
+Delete Feature Flag
+
+```shell
+curl --request DELETE \
+  --url http://localhost:8081/ff/v1/feature-flags/FEATURE_TEST
+```
+
+Disable Feature Flag
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/feature-flags/FEATURE_TEST/disable
+```
+
+Enable Feature Flag
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/feature-flags/FEATURE_TEST/enable
+```
+
+Find Feature Flag by its key
+
+```shell
+curl --request GET \
+  --url http://localhost:8081/ff/v1/feature-flags/FEATURE_TEST
+```
+
+Verify Feature Flag as Enable
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/feature-flags/FEATURE_TEST/verify-enabled
+```
+
+Verify Feature Flag as Disable
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/feature-flags/FEATURE_TEST/verify-disabled
+```
+
+- Rollouts Endpoints
+
+Create Rollout
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/rollouts \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"key": "ROLLOUT_TEST",
+	"group": "Group",
+	"description": "description",
+	"enabled_all": true,
+	"targets": {
+    "target1": "value1",
+    "target2": "value2",
+    "target3": "value3"
+  }
+}'
+```
+
+Update Rollout
+
+```shell
+curl --request PUT \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST \
+  --header 'Content-Type: application/json' \
+  --data '{
+	"group": "Group",
+	"description": "description",
+	"enabledAll": true,
+	"targets": {
+    "target1": "value1",
+    "target2": "value2",
+    "target3": "value3"
+  }
+}'
+```
+
+Delete Rollout
+
+```shell
+curl --request DELETE \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST
+```
+
+Get Rollout by its key
+
+```shell
+curl --request GET \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST
+```
+
+Add Target to Rollout
+
+```shell
+curl --request PUT \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST/targets/target_test3/add
+```
+
+Remove Target from Rollout
+
+```shell
+curl --request PUT \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST/targets/target_test2/remove
+```
+
+Enable Rollout
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST/enable
+```
+
+Disable Rollout
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST/disable
+```
+
+Verify target in Enabled Rollout
+
+```shell
+curl --request POST \
+  --url http://localhost:8081/ff/v1/rollouts/ROLLOUT_TEST/targets/target1/verify
 ```
 
 ## Application Example
+[Example Application with ff-4-go](https://github.com/GabrielEstmr/ff-4-go-example-application)
+
 
 ## Contact
 
 Any question or improvement contact to:
 
-```shell
-gabriel.estmr@gmail.com
+```
+  gabriel.estmr@gmail.com
 ```
 
