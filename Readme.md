@@ -77,19 +77,19 @@ of your host application:
 ```go
   isFFEnabled, err := client.GetFeaturesMethods().IsEnabled("my-feature-flag-key")
 
-featureProperty, err := client.GetFeaturesPropertyMethods().FindById("my-feature-property-key")
-
-isTargetInRollout, err := client.GetRolloutMethods().IsEnabledAllOrTargetInRollout("my-rollout-key")
+  featureProperty, err := client.GetFeaturesPropertyMethods().FindById("my-feature-property-key")
+  
+  isTargetInRollout, err := client.GetRolloutMethods().IsEnabledAllOrTargetInRollout("my-rollout-key")
 ```
 
 Through the client you have access the functions to use in your ws handler
 
 ```go
   router:= *mux.NewRouter()
-routeFns := client.GetRouteFn()
-for _, v := range routeFns {
-router.HandleFunc(v.URI, v.ControllerFunc).Methods(v.Method)
-}
+  routeFns := client.GetRouteFn()
+  for _, v := range routeFns {
+	  router.HandleFunc(v.URI, v.ControllerFunc).Methods(v.Method)
+  }
 ```
 
 All available Methods
