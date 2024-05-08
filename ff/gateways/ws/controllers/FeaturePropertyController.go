@@ -1,12 +1,11 @@
 package ff_gateways_ws_controllers
 
 import (
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
-	ff_gateways_ws_resources "baseapplicationgo/main/configs/ff/lib/gateways/ws/resources"
-	ff_usecases_interfaces "baseapplicationgo/main/configs/ff/lib/usecases/interfaces"
-	ff_utils "baseapplicationgo/main/configs/ff/lib/utils"
 	"encoding/json"
-	"github.com/gorilla/mux"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_gateways_ws_resources "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/resources"
+	ff_usecases_interfaces "github.com/GabrielEstmr/ff-4-go/ff/usecases/interfaces"
+	ff_utils "github.com/GabrielEstmr/ff-4-go/ff/utils"
 	"io"
 	"net/http"
 )

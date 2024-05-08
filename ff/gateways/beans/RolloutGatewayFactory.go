@@ -1,12 +1,11 @@
 package ff_gateways_beans
 
 import (
-	ff "baseapplicationgo/main/configs/ff/lib/configs/resources"
-	ff_gateways "baseapplicationgo/main/configs/ff/lib/gateways"
-	ff_gateways_cacheddb "baseapplicationgo/main/configs/ff/lib/gateways/cacheddb"
-	ff_gateways_mongo "baseapplicationgo/main/configs/ff/lib/gateways/mongo"
-	ff_mongo_redis "baseapplicationgo/main/configs/ff/lib/gateways/redis"
 	"errors"
+	ff_gateways "github.com/GabrielEstmr/ff-4-go/ff/gateways"
+	ff_gateways_cacheddb "github.com/GabrielEstmr/ff-4-go/ff/gateways/cacheddb"
+	ff_gateways_mongo "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo"
+	ff_mongo_redis "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis"
 )
 
 type RolloutGatewayFactory struct {

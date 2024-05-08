@@ -1,12 +1,11 @@
 package ff_gateways_redis_repo
 
 import (
-	ff "baseapplicationgo/main/configs/ff/lib/configs/resources"
-	ff_gateways_redis_documents "baseapplicationgo/main/configs/ff/lib/gateways/redis/documents"
 	"context"
 	"encoding/json"
 	"errors"
 	"fmt"
+	ff_gateways_redis_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis/documents"
 	"github.com/redis/go-redis/v9"
 	"time"
 )

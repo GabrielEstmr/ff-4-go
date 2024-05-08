@@ -1,7 +1,7 @@
 package ff_configs_resources
 
 import (
-	ff_usecases_externalinterfaces "baseapplicationgo/main/configs/ff/lib/usecases/externalinterfaces"
+	ff_usecases_externalinterfaces "github.com/GabrielEstmr/ff-4-go/ff/usecases/externalinterfaces"
 )
 
 // FfClient is the client of ff-4-go in your application and allows to have access to:

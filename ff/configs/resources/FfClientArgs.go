@@ -1,7 +1,7 @@
 package ff_configs_resources
 
 import (
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	"github.com/redis/go-redis/v9"
 	"go.mongodb.org/mongo-driver/mongo"
 )

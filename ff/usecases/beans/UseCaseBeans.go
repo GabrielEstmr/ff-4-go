@@ -1,9 +1,9 @@
 package ff_usecases_beans
 
 import (
-	ff_gateways "baseapplicationgo/main/configs/ff/lib/gateways"
-	ff_usecases "baseapplicationgo/main/configs/ff/lib/usecases"
-	ff_usecases_interfaces "baseapplicationgo/main/configs/ff/lib/usecases/interfaces"
+	ff_gateways "github.com/GabrielEstmr/ff-4-go/ff/gateways"
+	ff_usecases "github.com/GabrielEstmr/ff-4-go/ff/usecases"
+	ff_usecases_interfaces "github.com/GabrielEstmr/ff-4-go/ff/usecases/interfaces"
 )
 
 type UseCaseBeans struct {

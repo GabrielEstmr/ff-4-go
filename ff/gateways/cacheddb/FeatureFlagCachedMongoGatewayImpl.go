@@ -1,9 +1,9 @@
 package ff_gateways_cacheddb
 
 import (
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
-	ff_gateways "baseapplicationgo/main/configs/ff/lib/gateways"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_gateways "github.com/GabrielEstmr/ff-4-go/ff/gateways"
 	"log"
 )
 

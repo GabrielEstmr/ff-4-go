@@ -1,8 +1,8 @@
 package ff_configs_factories
 
 import (
-	ff_configs_resources "baseapplicationgo/main/configs/ff/lib/configs/resources"
-	ff_gateways_ws_beans "baseapplicationgo/main/configs/ff/lib/gateways/ws/beans"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
+	ff_gateways_ws_beans "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/beans"
 	"net/http"
 )
 

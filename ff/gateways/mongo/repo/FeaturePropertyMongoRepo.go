@@ -1,10 +1,9 @@
 package ff_gateways_mongo_repo
 
 import (
-	ff "baseapplicationgo/main/configs/ff/lib/configs/resources"
-	ff_gateways_mongo_documents "baseapplicationgo/main/configs/ff/lib/gateways/mongo/documents"
 	"context"
 	"errors"
+	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"

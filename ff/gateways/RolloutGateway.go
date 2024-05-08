@@ -1,13 +1,13 @@
 package ff_gateways
 
 import (
-	ff_resources "baseapplicationgo/main/configs/ff/lib/domains"
-	"baseapplicationgo/main/configs/ff/lib/domains/exceptions"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 )
 
 type RolloutGateway interface {
-	Save(rollout ff_resources.Rollout) (ff_resources.Rollout, ff_domains_exceptions.LibException)
-	Update(rollout ff_resources.Rollout) (ff_resources.Rollout, ff_domains_exceptions.LibException)
+	Save(rollout ff_domains.Rollout) (ff_domains.Rollout, ff_domains_exceptions.LibException)
+	Update(rollout ff_domains.Rollout) (ff_domains.Rollout, ff_domains_exceptions.LibException)
 	Delete(key string) ff_domains_exceptions.LibException
-	FindById(key string) (ff_resources.Rollout, ff_domains_exceptions.LibException)
+	FindById(key string) (ff_domains.Rollout, ff_domains_exceptions.LibException)
 }

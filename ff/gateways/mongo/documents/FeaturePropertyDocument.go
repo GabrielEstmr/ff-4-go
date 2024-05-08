@@ -1,7 +1,7 @@
 package ff_gateways_mongo_documents
 
 import (
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 	"reflect"
 )

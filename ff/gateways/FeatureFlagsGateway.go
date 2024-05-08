@@ -1,8 +1,8 @@
 package ff_gateways
 
 import (
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
-	"baseapplicationgo/main/configs/ff/lib/domains/exceptions"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 )
 
 type FeatureFlagsGateway interface {

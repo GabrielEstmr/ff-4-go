@@ -1,11 +1,10 @@
 package ff_gateways_mongo
 
 import (
-	ff "baseapplicationgo/main/configs/ff/lib/configs/resources"
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
-	ff_gateways_mongo_documents "baseapplicationgo/main/configs/ff/lib/gateways/mongo/documents"
-	ff_gateways_mongo_repo "baseapplicationgo/main/configs/ff/lib/gateways/mongo/repo"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
+	ff_gateways_mongo_repo "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/repo"
 )
 
 type FeaturePropertyMongoGatewayImpl struct {

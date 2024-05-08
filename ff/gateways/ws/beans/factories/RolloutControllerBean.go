@@ -1,8 +1,8 @@
 package ff_gateways_ws_beans_factories
 
 import (
-	ff_gateways_ws_controllers "baseapplicationgo/main/configs/ff/lib/gateways/ws/controllers"
-	ff_usecases_beans "baseapplicationgo/main/configs/ff/lib/usecases/beans"
+	ff_gateways_ws_controllers "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/controllers"
+	ff_usecases_beans "github.com/GabrielEstmr/ff-4-go/ff/usecases/beans"
 )
 
 type RolloutControllerBean struct {

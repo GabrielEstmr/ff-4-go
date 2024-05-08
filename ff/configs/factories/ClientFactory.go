@@ -1,13 +1,21 @@
+/*
+ * Copyright (c) 2024. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+ * Morbi non lorem porttitor neque feugiat blandit. Ut vitae ipsum eget quam lacinia accumsan.
+ * Etiam sed turpis ac ipsum condimentum fringilla. Maecenas magna.
+ * Proin dapibus sapien vel ante. Aliquam erat volutpat. Pellentesque sagittis ligula eget metus.
+ * Vestibulum commodo. Ut rhoncus gravida arcu.
+ */
+
 package ff_configs_factories
 
 import (
-	ff_configs_resources "baseapplicationgo/main/configs/ff/lib/configs/resources"
-	ff_gateways_beans "baseapplicationgo/main/configs/ff/lib/gateways/beans"
-	ff_gateways_ws_beans "baseapplicationgo/main/configs/ff/lib/gateways/ws/beans"
-	ff_usecases_beans "baseapplicationgo/main/configs/ff/lib/usecases/beans"
-	ff_usecases_externalinterfaces_impl "baseapplicationgo/main/configs/ff/lib/usecases/externalinterfaces/impl"
-	ff_utils "baseapplicationgo/main/configs/ff/lib/utils"
 	"fmt"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
+	ff_gateways_beans "github.com/GabrielEstmr/ff-4-go/ff/gateways/beans"
+	ff_gateways_ws_beans "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/beans"
+	ff_usecases_beans "github.com/GabrielEstmr/ff-4-go/ff/usecases/beans"
+	ff_usecases_externalinterfaces_impl "github.com/GabrielEstmr/ff-4-go/ff/usecases/externalinterfaces/impl"
+	ff_utils "github.com/GabrielEstmr/ff-4-go/ff/utils"
 )
 
 // ClientFactory is the factory of FfClient

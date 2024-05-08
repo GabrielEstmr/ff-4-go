@@ -1,13 +1,13 @@
 package ff_gateways
 
 import (
-	ff_resources "baseapplicationgo/main/configs/ff/lib/domains"
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 )
 
 type FeaturePropertyGateway interface {
-	Save(property ff_resources.FeatureProperty) (ff_resources.FeatureProperty, ff_domains_exceptions.LibException)
-	Update(property ff_resources.FeatureProperty) (ff_resources.FeatureProperty, ff_domains_exceptions.LibException)
+	Save(property ff_domains.FeatureProperty) (ff_domains.FeatureProperty, ff_domains_exceptions.LibException)
+	Update(property ff_domains.FeatureProperty) (ff_domains.FeatureProperty, ff_domains_exceptions.LibException)
 	Delete(key string) ff_domains_exceptions.LibException
-	FindById(key string) (ff_resources.FeatureProperty, ff_domains_exceptions.LibException)
+	FindById(key string) (ff_domains.FeatureProperty, ff_domains_exceptions.LibException)
 }

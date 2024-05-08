@@ -1,11 +1,10 @@
 package ff_mongo_redis
 
 import (
-	ff "baseapplicationgo/main/configs/ff/lib/configs/resources"
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
-	ff_gateways_redis_documents "baseapplicationgo/main/configs/ff/lib/gateways/redis/documents"
-	ff_gateways_redis_repo "baseapplicationgo/main/configs/ff/lib/gateways/redis/repo"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_gateways_redis_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis/documents"
+	ff_gateways_redis_repo "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis/repo"
 )
 
 type RolloutRedisGatewayImpl struct {

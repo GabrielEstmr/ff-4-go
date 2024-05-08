@@ -1,9 +1,9 @@
 package ff_gateways_ws_beans
 
 import (
-	ff_gateways_ws_beans_factories "baseapplicationgo/main/configs/ff/lib/gateways/ws/beans/factories"
-	"baseapplicationgo/main/configs/ff/lib/gateways/ws/controllers"
-	ff_usecases_beans "baseapplicationgo/main/configs/ff/lib/usecases/beans"
+	ff_gateways_ws_beans_factories "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/beans/factories"
+	ff_gateways_ws_controllers "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/controllers"
+	ff_usecases_beans "github.com/GabrielEstmr/ff-4-go/ff/usecases/beans"
 )
 
 type ControllerBeans struct {

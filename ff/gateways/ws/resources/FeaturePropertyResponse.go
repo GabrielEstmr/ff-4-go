@@ -1,7 +1,7 @@
 package ff_gateways_ws_resources
 
 import (
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	"reflect"
 	"time"
 )
