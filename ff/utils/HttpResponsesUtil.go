@@ -1,0 +1,50 @@
+/*
+ * Copyright (c) 2024. Licensed under the Apache License, Version 2.0 (the "License");
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+package ff_utils
+
+import (
+	"encoding/json"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_gateways_ws_resources "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/resources"
+	"log"
+	"net/http"
+	"strconv"
+)
+
+const _ERROR_UTILS_MSG_ARCH_ISSUE = "Architecture application issue"
+
+type HttpResponsesUtil struct {
+}
+
+func NewHttpResponsesUtil() *HttpResponsesUtil {
+	return &HttpResponsesUtil{}
+}
+
+func (this HttpResponsesUtil) JSON(w http.ResponseWriter, statusCode int, data interface{}) {
+	w.WriteHeader(statusCode)
+	if data == nil {
+		return
+	}
+	if err := json.NewEncoder(w).Encode(&data); err != nil {
+		json.NewEncoder(w).Encode(
+			ff_gateways_ws_resources.NewErrorResponseSlgMsg(
+				strconv.Itoa(statusCode),
+				_ERROR_UTILS_MSG_ARCH_ISSUE))
+		w.WriteHeader(http.StatusInternalServerError)
+		log.Fatal(err)
+	}
+}
+
+func (this HttpResponsesUtil) ERROR_APP(
+	w http.ResponseWriter,
+	appException ff_domains_exceptions.LibException,
+) {
+	r := ff_gateways_ws_resources.NewErrorResponse(
+		strconv.Itoa(appException.GetCode()), appException.GetMessages())
+	this.JSON(w, appException.GetCode(), r)
+}
