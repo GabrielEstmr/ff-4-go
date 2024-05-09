@@ -1,6 +1,7 @@
 package ff_gateways_mongo
 
 import (
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
@@ -11,7 +12,7 @@ type FeatureFlagMongoGatewayImpl struct {
 	repo *ff_gateways_mongo_repo.FeatureFlagMongoRepo
 }
 
-func NewFeatureFlagMongoGatewayImpl(ffConfigData ff.FfClientArgs) *FeatureFlagMongoGatewayImpl {
+func NewFeatureFlagMongoGatewayImpl(ffConfigData ff_configs_resources.FfClientArgs) *FeatureFlagMongoGatewayImpl {
 	return &FeatureFlagMongoGatewayImpl{
 		repo: ff_gateways_mongo_repo.NewFeatureFlagMongoRepo(ffConfigData),
 	}

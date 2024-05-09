@@ -5,16 +5,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_gateways_redis_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis/documents"
 	"github.com/redis/go-redis/v9"
 	"time"
 )
 
 type RolloutRedisRepo struct {
-	ffConfigData *ff.FfClientArgs
+	ffConfigData *ff_configs_resources.FfClientArgs
 }
 
-func NewRolloutRedisRepo(ffConfigData ff.FfClientArgs) *RolloutRedisRepo {
+func NewRolloutRedisRepo(ffConfigData ff_configs_resources.FfClientArgs) *RolloutRedisRepo {
 	return &RolloutRedisRepo{&ffConfigData}
 }
 

@@ -3,6 +3,7 @@ package ff_gateways_mongo_repo
 import (
 	"context"
 	"errors"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -17,10 +18,10 @@ type RolloutMongoRepo struct {
 	_FIELD_ENABLED_ALL        string
 	_FIELD_TARGETS            string
 	_FIELD_LAST_MODIFIED_DATE string
-	ffConfigData              ff.FfClientArgs
+	ffConfigData              ff_configs_resources.FfClientArgs
 }
 
-func NewRolloutMongoRepo(ffConfigData ff.FfClientArgs) *RolloutMongoRepo {
+func NewRolloutMongoRepo(ffConfigData ff_configs_resources.FfClientArgs) *RolloutMongoRepo {
 	return &RolloutMongoRepo{
 		_FIELD_KEY:                "_id",
 		_FIELD_GROUP:              "group",

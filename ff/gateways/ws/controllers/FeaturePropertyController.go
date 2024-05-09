@@ -77,8 +77,7 @@ func (this *FeaturePropertyController) CreateFeatureProperty(w http.ResponseWrit
 
 func (this *FeaturePropertyController) UpdateFeatureProperty(w http.ResponseWriter, r *http.Request) {
 
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	requestBody, err := io.ReadAll(r.Body)
 	if err != nil || len(requestBody) == 0 {
 		this.httpResponsesUtil.ERROR_APP(
@@ -108,8 +107,7 @@ func (this *FeaturePropertyController) UpdateFeatureProperty(w http.ResponseWrit
 }
 
 func (this *FeaturePropertyController) DeleteFeatureProperty(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	errApp := this.deleteFeatureProperty.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -119,8 +117,7 @@ func (this *FeaturePropertyController) DeleteFeatureProperty(w http.ResponseWrit
 }
 
 func (this *FeaturePropertyController) FindFeaturePropertyById(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	feature, errApp := this.findFeaturePropertyById.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -131,9 +128,8 @@ func (this *FeaturePropertyController) FindFeaturePropertyById(w http.ResponseWr
 }
 
 func (this *FeaturePropertyController) AddValueToFeatureProperty(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
-	value := params["value"]
+	key := r.PathValue("key")
+	value := r.PathValue("value")
 	updatedFeatureProperty, errApp := this.addValueToFeatureProperty.Execute(key, value)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -144,9 +140,8 @@ func (this *FeaturePropertyController) AddValueToFeatureProperty(w http.Response
 }
 
 func (this *FeaturePropertyController) RemoveValueToFeatureProperty(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
-	value := params["value"]
+	key := r.PathValue("key")
+	value := r.PathValue("value")
 	updatedFeatureProperty, errApp := this.removeValueToFeatureProperty.Execute(key, value)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -157,8 +152,7 @@ func (this *FeaturePropertyController) RemoveValueToFeatureProperty(w http.Respo
 }
 
 func (this *FeaturePropertyController) EnableFeatureProperty(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	updatedFeatureProperty, errApp := this.enableFeatureProperty.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -169,8 +163,7 @@ func (this *FeaturePropertyController) EnableFeatureProperty(w http.ResponseWrit
 }
 
 func (this *FeaturePropertyController) DisableFeatureProperty(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	updatedFeatureProperty, errApp := this.disableFeatureProperty.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)

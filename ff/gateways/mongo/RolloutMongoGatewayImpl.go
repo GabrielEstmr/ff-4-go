@@ -1,6 +1,7 @@
 package ff_gateways_mongo
 
 import (
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
@@ -11,7 +12,7 @@ type RolloutMongoGatewayImpl struct {
 	repo *ff_gateways_mongo_repo.RolloutMongoRepo
 }
 
-func NewRolloutMongoGatewayImpl(ffConfigData ff.FfClientArgs) *RolloutMongoGatewayImpl {
+func NewRolloutMongoGatewayImpl(ffConfigData ff_configs_resources.FfClientArgs) *RolloutMongoGatewayImpl {
 	return &RolloutMongoGatewayImpl{
 		repo: ff_gateways_mongo_repo.NewRolloutMongoRepo(ffConfigData),
 	}

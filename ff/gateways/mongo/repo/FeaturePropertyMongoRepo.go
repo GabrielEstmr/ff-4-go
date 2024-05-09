@@ -3,6 +3,7 @@ package ff_gateways_mongo_repo
 import (
 	"context"
 	"errors"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -17,10 +18,10 @@ type FeaturePropertyMongoRepo struct {
 	_FIELD_ENABLED            string
 	_FIELD_VALUES             string
 	_FIELD_LAST_MODIFIED_DATE string
-	ffConfigData              ff.FfClientArgs
+	ffConfigData              ff_configs_resources.FfClientArgs
 }
 
-func NewFeaturePropertyMongoRepo(ffConfigData ff.FfClientArgs) *FeaturePropertyMongoRepo {
+func NewFeaturePropertyMongoRepo(ffConfigData ff_configs_resources.FfClientArgs) *FeaturePropertyMongoRepo {
 	return &FeaturePropertyMongoRepo{
 		_FIELD_KEY:                "_id",
 		_FIELD_GROUP:              "group",

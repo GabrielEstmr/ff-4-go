@@ -15,7 +15,7 @@
 
 ## Compatibility
 
-- Go 1.21.4 or above
+- Go 1.22.3 or above
 - github.com/redis/go-redis/v9 v9.5.1 or above
 - go.mongodb.org/mongo-driver v1.15.0 or above
 
@@ -85,10 +85,9 @@ of your host application:
 Through the client you have access the functions to use in your ws handler
 
 ```go
-  router:= *mux.NewRouter()
-  routeFns := client.GetRouteFn()
+  mux := http.NewServeMux()
   for _, v := range routeFns {
-	  router.HandleFunc(v.URI, v.ControllerFunc).Methods(v.Method)
+     mux.HandleFunc(v.GetPattern(), v.ControllerFunc)
   }
 ```
 

@@ -2,6 +2,7 @@ package ff_gateways_beans
 
 import (
 	"errors"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_gateways "github.com/GabrielEstmr/ff-4-go/ff/gateways"
 	ff_gateways_cacheddb "github.com/GabrielEstmr/ff-4-go/ff/gateways/cacheddb"
 	ff_gateways_mongo "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo"
@@ -9,10 +10,10 @@ import (
 )
 
 type FeaturePropertyGatewayFactory struct {
-	ffConfigData ff.FfClientArgs
+	ffConfigData ff_configs_resources.FfClientArgs
 }
 
-func NewFeaturePropertyGatewayFactory(ffConfigData ff.FfClientArgs) *FeaturePropertyGatewayFactory {
+func NewFeaturePropertyGatewayFactory(ffConfigData ff_configs_resources.FfClientArgs) *FeaturePropertyGatewayFactory {
 	return &FeaturePropertyGatewayFactory{ffConfigData}
 }
 

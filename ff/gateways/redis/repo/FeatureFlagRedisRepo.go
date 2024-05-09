@@ -5,16 +5,17 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_gateways_redis_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis/documents"
 	"github.com/redis/go-redis/v9"
 	"time"
 )
 
 type FeatureFlagRedisRepo struct {
-	ffConfigData *ff.FfClientArgs
+	ffConfigData *ff_configs_resources.FfClientArgs
 }
 
-func NewFeatureFlagRedisRepo(ffConfigData ff.FfClientArgs) *FeatureFlagRedisRepo {
+func NewFeatureFlagRedisRepo(ffConfigData ff_configs_resources.FfClientArgs) *FeatureFlagRedisRepo {
 	return &FeatureFlagRedisRepo{&ffConfigData}
 }
 

@@ -3,6 +3,7 @@ package ff_gateways_mongo_repo
 import (
 	"context"
 	"errors"
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -12,10 +13,10 @@ import (
 
 type FeatureFlagMongoRepo struct {
 	_FIELD_KEY   string
-	ffConfigData ff.FfClientArgs
+	ffConfigData ff_configs_resources.FfClientArgs
 }
 
-func NewFeatureFlagMongoRepo(ffConfigData ff.FfClientArgs) *FeatureFlagMongoRepo {
+func NewFeatureFlagMongoRepo(ffConfigData ff_configs_resources.FfClientArgs) *FeatureFlagMongoRepo {
 	return &FeatureFlagMongoRepo{
 		_FIELD_KEY:   "_id",
 		ffConfigData: ffConfigData,

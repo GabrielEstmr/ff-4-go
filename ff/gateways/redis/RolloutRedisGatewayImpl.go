@@ -1,6 +1,7 @@
 package ff_mongo_redis
 
 import (
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 	ff_gateways_redis_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis/documents"
@@ -11,7 +12,7 @@ type RolloutRedisGatewayImpl struct {
 	repo *ff_gateways_redis_repo.RolloutRedisRepo
 }
 
-func NewRolloutRedisGatewayImpl(ffConfigData ff.FfClientArgs) *RolloutRedisGatewayImpl {
+func NewRolloutRedisGatewayImpl(ffConfigData ff_configs_resources.FfClientArgs) *RolloutRedisGatewayImpl {
 	return &RolloutRedisGatewayImpl{
 		repo: ff_gateways_redis_repo.NewRolloutRedisRepo(ffConfigData),
 	}

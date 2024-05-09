@@ -1,9 +1,9 @@
 package ff_usecases_externalinterfaces_impl
 
 import (
-	ff_domains "baseapplicationgo/main/configs/ff/lib/domains"
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
-	ff_usecases_beans "baseapplicationgo/main/configs/ff/lib/usecases/beans"
+	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_usecases_beans "github.com/GabrielEstmr/ff-4-go/ff/usecases/beans"
 )
 
 type FeatureFlagMethodsImpl struct {

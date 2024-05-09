@@ -73,8 +73,7 @@ func (this *FeatureController) CreateFeature(w http.ResponseWriter, r *http.Requ
 }
 
 func (this *FeatureController) DeleteFeature(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	errApp := this.deleteFeature.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -84,8 +83,7 @@ func (this *FeatureController) DeleteFeature(w http.ResponseWriter, r *http.Requ
 }
 
 func (this *FeatureController) DisableFeature(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	feature, errApp := this.disableFeature.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -95,8 +93,7 @@ func (this *FeatureController) DisableFeature(w http.ResponseWriter, r *http.Req
 }
 
 func (this *FeatureController) EnableFeature(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	feature, errApp := this.enableFeature.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -106,8 +103,7 @@ func (this *FeatureController) EnableFeature(w http.ResponseWriter, r *http.Requ
 }
 
 func (this *FeatureController) FindFeatureByKey(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	feature, errApp := this.findFeatureByKey.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -117,8 +113,7 @@ func (this *FeatureController) FindFeatureByKey(w http.ResponseWriter, r *http.R
 }
 
 func (this *FeatureController) IsFeatureEnabled(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	isEnabled, errApp := this.isFeatureEnabled.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -128,8 +123,7 @@ func (this *FeatureController) IsFeatureEnabled(w http.ResponseWriter, r *http.R
 }
 
 func (this *FeatureController) IsFeatureDisabled(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	isEnabled, errApp := this.isFeatureDisabled.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)

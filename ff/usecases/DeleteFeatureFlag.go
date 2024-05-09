@@ -1,8 +1,8 @@
 package ff_usecases
 
 import (
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
-	ff_gateways "baseapplicationgo/main/configs/ff/lib/gateways"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_gateways "github.com/GabrielEstmr/ff-4-go/ff/gateways"
 )
 
 type DeleteFeatureFlag struct {

@@ -1,9 +1,9 @@
 package ff_utils
 
 import (
-	ff_domains_exceptions "baseapplicationgo/main/configs/ff/lib/domains/exceptions"
-	ff_gateways_ws_resources "baseapplicationgo/main/configs/ff/lib/gateways/ws/resources"
 	"encoding/json"
+	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
+	ff_gateways_ws_resources "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/resources"
 	"log"
 	"net/http"
 	"strconv"

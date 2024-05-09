@@ -1,6 +1,6 @@
 module github.com/GabrielEstmr/ff-4-go
 
-go 1.21.4
+go 1.22.3
 
 require (
 	github.com/redis/go-redis/v9 v9.5.1

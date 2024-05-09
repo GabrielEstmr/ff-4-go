@@ -6,7 +6,6 @@ import (
 	ff_gateways_ws_resources "github.com/GabrielEstmr/ff-4-go/ff/gateways/ws/resources"
 	ff_usecases_interfaces "github.com/GabrielEstmr/ff-4-go/ff/usecases/interfaces"
 	ff_utils "github.com/GabrielEstmr/ff-4-go/ff/utils"
-	"github.com/gorilla/mux"
 	"io"
 	"net/http"
 )
@@ -81,8 +80,7 @@ func (this *RolloutController) CreateRollout(w http.ResponseWriter, r *http.Requ
 
 func (this *RolloutController) UpdateRollout(w http.ResponseWriter, r *http.Request) {
 
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	requestBody, err := io.ReadAll(r.Body)
 	if err != nil || len(requestBody) == 0 {
 		this.httpResponsesUtil.ERROR_APP(
@@ -111,8 +109,7 @@ func (this *RolloutController) UpdateRollout(w http.ResponseWriter, r *http.Requ
 }
 
 func (this *RolloutController) DeleteRollout(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	errApp := this.deleteRollout.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -122,8 +119,7 @@ func (this *RolloutController) DeleteRollout(w http.ResponseWriter, r *http.Requ
 }
 
 func (this *RolloutController) FindRolloutByKey(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	rollout, errApp := this.findRolloutById.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -133,9 +129,8 @@ func (this *RolloutController) FindRolloutByKey(w http.ResponseWriter, r *http.R
 }
 
 func (this *RolloutController) AddTargetToRollout(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
-	target := params["target"]
+	key := r.PathValue("key")
+	target := r.PathValue("target")
 	rollout, errApp := this.addTargetToRollout.Execute(key, target)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -145,9 +140,8 @@ func (this *RolloutController) AddTargetToRollout(w http.ResponseWriter, r *http
 }
 
 func (this *RolloutController) RemoveTargetFromRollout(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
-	target := params["target"]
+	key := r.PathValue("key")
+	target := r.PathValue("target")
 	rollout, errApp := this.removeTargetFromRollout.Execute(key, target)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -157,8 +151,7 @@ func (this *RolloutController) RemoveTargetFromRollout(w http.ResponseWriter, r 
 }
 
 func (this *RolloutController) EnableToAll(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	rollout, errApp := this.enableRolloutToAll.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -168,8 +161,7 @@ func (this *RolloutController) EnableToAll(w http.ResponseWriter, r *http.Reques
 }
 
 func (this *RolloutController) DisableToAll(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
+	key := r.PathValue("key")
 	rollout, errApp := this.disableRolloutToAll.Execute(key)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)
@@ -179,9 +171,8 @@ func (this *RolloutController) DisableToAll(w http.ResponseWriter, r *http.Reque
 }
 
 func (this *RolloutController) VerifyIsTargetInRollout(w http.ResponseWriter, r *http.Request) {
-	params := mux.Vars(r)
-	key := params["key"]
-	target := params["target"]
+	key := r.PathValue("key")
+	target := r.PathValue("target")
 	isTargetInRollout, errApp := this.isTargetInRollout.Execute(key, target)
 	if errApp != nil {
 		this.httpResponsesUtil.ERROR_APP(w, errApp)

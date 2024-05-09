@@ -1,6 +1,7 @@
 package ff_mongo_redis
 
 import (
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 	ff_gateways_redis_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/redis/documents"
@@ -11,7 +12,7 @@ type FeaturePropertyRedisGatewayImpl struct {
 	repo *ff_gateways_redis_repo.FeaturePropertyRedisRepo
 }
 
-func NewFeaturePropertyRedisGatewayImpl(ffConfigData ff.FfClientArgs) *FeaturePropertyRedisGatewayImpl {
+func NewFeaturePropertyRedisGatewayImpl(ffConfigData ff_configs_resources.FfClientArgs) *FeaturePropertyRedisGatewayImpl {
 	return &FeaturePropertyRedisGatewayImpl{
 		repo: ff_gateways_redis_repo.NewFeaturePropertyRedisRepo(ffConfigData),
 	}

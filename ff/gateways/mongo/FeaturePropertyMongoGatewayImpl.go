@@ -1,6 +1,7 @@
 package ff_gateways_mongo
 
 import (
+	ff_configs_resources "github.com/GabrielEstmr/ff-4-go/ff/configs/resources"
 	ff_domains "github.com/GabrielEstmr/ff-4-go/ff/domains"
 	ff_domains_exceptions "github.com/GabrielEstmr/ff-4-go/ff/domains/exceptions"
 	ff_gateways_mongo_documents "github.com/GabrielEstmr/ff-4-go/ff/gateways/mongo/documents"
@@ -11,7 +12,7 @@ type FeaturePropertyMongoGatewayImpl struct {
 	repo *ff_gateways_mongo_repo.FeaturePropertyMongoRepo
 }
 
-func NewFeaturePropertyMongoGatewayImpl(ffConfigData ff.FfClientArgs) *FeaturePropertyMongoGatewayImpl {
+func NewFeaturePropertyMongoGatewayImpl(ffConfigData ff_configs_resources.FfClientArgs) *FeaturePropertyMongoGatewayImpl {
 	return &FeaturePropertyMongoGatewayImpl{
 		repo: ff_gateways_mongo_repo.NewFeaturePropertyMongoRepo(ffConfigData),
 	}
