@@ -27,10 +27,10 @@ Make sure to initialize a Go module:
 go mod init github.com/my/repo
 ```
 
-Then install go-redis/v9:
+Then install ff-4-go
 
 ```shell
-go get github.com/redis/go-redis/v9
+go get github.com/GabrielEstmr/ff-4-go@v1.0.0
 ```
 
 ## Quickstart
@@ -86,7 +86,7 @@ Through the client you have access the functions to use in your ws handler
 
 ```go
   mux := http.NewServeMux()
-  for _, v := range routeFns {
+  for _, v := range client.GetRouteFns() {
      mux.HandleFunc(v.GetPattern(), v.ControllerFunc)
   }
 ```
