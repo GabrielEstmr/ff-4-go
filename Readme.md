@@ -9,9 +9,11 @@
 ## Main Features
 
 - Provide feature management in an easy way in golang applications
+- Distributed access to features in horizontal scaled application
 - Plug and use: pass only few arguments to be allowed to both use features inside the code of the host application and
   to provide endpoints to manage them as well (for front-end access to these features for instance)
-- Work with boolean features, multi-values features and rollout feature control
+- Work with boolean features (feature-flags), multi-values features and rollout feature control
+- Option to use caching through redis
 
 ## Compatibility
 
@@ -129,7 +131,48 @@ type RolloutMethods interface {
 
 ## Available Endpoints
 
-- Feature Properties Endpoints
+### Feature Properties Endpoints
+
+```
+  POST  /ff/v1/feature-properties
+  PUT   /ff/v1/feature-properties/{featureId}
+  DEL   /ff/v1/feature-properties/{featureId}
+  GET   /ff/v1/feature-properties/{featureId}
+  PUT   /ff/v1/feature-properties/{featureId}/values/{value}/add
+  PUT   /ff/v1/feature-properties/{featureId}/values/{value}/remove
+  POST  /ff/v1/feature-properties/{featureId}/enable
+  POST  /ff/v1/feature-properties/{featureId}/disable
+```
+
+### Feature Flags Endpoints
+
+```
+  POST  /ff/v1/feature-flags
+  DEL   /ff/v1/feature-flags/{featureId}
+  POST  /ff/v1/feature-flags/{featureId}/disable
+  POST  /ff/v1/feature-flags/{featureId}/enable
+  GET   /ff/v1/feature-flags/{featureId}
+  POST  /ff/v1/feature-flags/{featureId}/verify-enabled
+  POST  /ff/v1/feature-flags/{featureId}/verify-disabled
+```
+
+### Rollouts Endpoints
+
+```
+  POST  /ff/v1/rollouts
+  PUT   /ff/v1/rollouts/{rolloutId}
+  DEL   /ff/v1/rollouts/{rolloutId}
+  GET   /ff/v1/rollouts/{rolloutId}
+  PUT   /ff/v1/rollouts/{rolloutId}/targets/{target}/add
+  PUT   /ff/v1/rollouts/{rolloutId}/targets/{target}/remove
+  POST  /ff/v1/rollouts/{rolloutId}/enable
+  POST  /ff/v1/rollouts/{rolloutId}/disable
+  POST  /ff/v1/rollouts/{rolloutId}/targets/{target}/verify
+```
+
+### Curl examples:
+
+#### Feature Properties Endpoints
 
 Create Feature Property
 
@@ -211,7 +254,7 @@ curl --request POST \
   --url http://localhost:8081/ff/v1/feature-properties/FEATURE_TEST/disable
 ```
 
-- Feature Flags Endpoints
+#### Feature Flags Endpoints
 
 Create Feature Flag
 
@@ -269,7 +312,7 @@ curl --request POST \
   --url http://localhost:8081/ff/v1/feature-flags/FEATURE_TEST/verify-disabled
 ```
 
-- Rollouts Endpoints
+#### Rollouts Endpoints
 
 Create Rollout
 
@@ -358,7 +401,18 @@ curl --request POST \
 ```
 
 ## Application Example
-[Example Application with ff-4-go](https://github.com/GabrielEstmr/ff-4-go-example-application)
+- [Example Application with ff-4-go](https://github.com/GabrielEstmr/ff-4-go-example-application)
+
+## Roadmap
+- v1.1.2:
+  - Inclusion of FindByFilter method for FeatureFlags, FeatureProperties and Rollouts in order to manipulate these resources internally in your code;
+  - Inclusion of GET /ff/v1/feature-flags to find FeatureFlags by query params;
+  - Inclusion of GET /ff/v1/feature-properties to find FeatureProperties by query params;
+  - Inclusion of GET /ff/v1/rollouts to find rollouts by query params;
+- v1.2.0:
+  - Inclusion of atomic and thread safe operations for save and update operations;
+- v1.3.0:
+  - Inclusion of UI page to manipulate the resources; 
 
 
 ## Contact
